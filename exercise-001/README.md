@@ -40,7 +40,7 @@ Damit Sie sich mit Ihren Kollegen messen können, interessiert Sie nur eine Sach
 ```cpp
 auto start = std::chrono::system_clock::now();
 
-/* do some work */
+/* do some work  */
 
 auto end = std::chrono::system_clock::now();
 auto elapsed = end - start;
