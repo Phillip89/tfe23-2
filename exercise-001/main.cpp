@@ -9,6 +9,11 @@ auto printVector(std::vector<int>* parVector)
     fmt::print("[{}]\n", fmt::join(*parVector, ", "));
 }
 
+auto sortVector(std::vector<int>* parVector)
+{
+    std::sort(parVector->begin(), parVector->end());
+}
+
 auto main(int argc, char **argv) -> int
 {
     /**
@@ -37,17 +42,26 @@ auto main(int argc, char **argv) -> int
 
     /* INSERT YOUR CODE HERE */
     /*std::cout << counter << std::endl;*/
+
     std::vector<int> testVector (counter, 0);
     for (int i=0; i<counter; i++)
     {
         testVector[i] = rand() % 100;
         /*std::cout << testVector[i] << std::endl;*/
     }
+    
     fmt::print("Vektor unsortiert: ");
     printVector(&testVector);
-    std::sort(testVector.begin(), testVector.end());
+    
+    auto start = std::chrono::system_clock::now();
+    sortVector(&testVector);
+    auto end = std::chrono::system_clock::now();
+    auto elapsed = end - start;
+
     fmt::print("Vektor sortiert: ");
     printVector(&testVector);
+
+    fmt::print("Benötigte Zeit: {}", elapsed);
 
     return 0; /* exit gracefully*/
 }
