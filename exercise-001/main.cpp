@@ -43,6 +43,10 @@ auto main(int argc, char **argv) -> int
         testVector[i] = rand() % 100;
         /*std::cout << testVector[i] << std::endl;*/
     }
+    fmt::print("Vektor unsortiert: ");
+    printVector(&testVector);
+    std::sort(testVector.begin(), testVector.end());
+    fmt::print("Vektor sortiert: ");
     printVector(&testVector);
 
     return 0; /* exit gracefully*/
