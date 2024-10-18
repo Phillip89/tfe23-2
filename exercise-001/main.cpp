@@ -32,6 +32,13 @@ auto main(int argc, char **argv) -> int
 
     /* INSERT YOUR CODE HERE */
     /*std::cout << counter << std::endl;*/
+    std::vector<int> testVector (counter, 0);
+    for (int i=0; i<counter; i++)
+    {
+        testVector[i] = rand() % 100;
+        /*std::cout << testVector[i] << std::endl;*/
+    }
+    
 
     return 0; /* exit gracefully*/
 }
