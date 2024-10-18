@@ -4,6 +4,11 @@
 #include "CLI/CLI.hpp"
 #include "config.h"
 
+auto printVector(std::vector<int>* parVector)
+{
+    fmt::print("[{}]\n", fmt::join(*parVector, ", "));
+}
+
 auto main(int argc, char **argv) -> int
 {
     /**
@@ -38,7 +43,7 @@ auto main(int argc, char **argv) -> int
         testVector[i] = rand() % 100;
         /*std::cout << testVector[i] << std::endl;*/
     }
-    
+    printVector(&testVector);
 
     return 0; /* exit gracefully*/
 }
