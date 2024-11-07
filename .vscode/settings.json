@@ -106,7 +106,11 @@
         "shared_mutex": "cpp",
         "compare": "cpp",
         "concepts": "cpp",
-        "numbers": "cpp"
+        "numbers": "cpp",
+        "any": "cpp",
+        "semaphore": "cpp",
+        "stop_token": "cpp",
+        "forward_list": "cpp"
     },
     "cSpell.language": "en,en-GB",
     "cSpell.words": [

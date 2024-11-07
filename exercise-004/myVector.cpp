@@ -1,6 +1,6 @@
 #include <fmt/chrono.h>
 #include <fmt/format.h>
-#include "config.h" /* Make sure this file exists and defines PROJECT_NAME, PROJECT_VER, PROJECT_BUILD_DATE */
+#include "config.h" 
 #include "myVector.hpp"
 
 MyVector::MyVector() : data(nullptr), m_size(0)
@@ -9,12 +9,12 @@ MyVector::MyVector() : data(nullptr), m_size(0)
 
 MyVector::MyVector(unsigned int size) : m_size(size)
 {
-    data = new int[size]; // Reserve memory for `data`
+    data = new int[size];
 }
 
 MyVector::~MyVector()
 {
-    delete[] data; // Release allocated memory
+    delete[] data; 
 }
 
 unsigned int MyVector::size() 
@@ -39,7 +39,35 @@ void MyVector::resize(int new_elements)
     data = new_data;
 }
 
-void MyVector::push_back(int element)
+/*void MyVector::push_back(int element)
+{
+    if (current_size < m_size)
+    {
+        data[current_size] = element;
+    }
+    else
+    {
+        resize(m_size);
+        data[current_size] = element;
+    }
+    current_size++;
+}*/
+
+void MyVector::push_back(const int* const element)
+{
+    if (current_size < m_size)
+    {
+        data[current_size] = *element;
+    }
+    else
+    {
+        resize(m_size);
+        data[current_size] = *element;
+    }
+    current_size++;
+}
+
+void MyVector::push_back(const int & element)
 {
     if (current_size < m_size)
     {
@@ -52,34 +80,6 @@ void MyVector::push_back(int element)
     }
     current_size++;
 }
-
-/*void MyVector::push_back(int &element)
-{
-    if (current_size < m_size)
-    {
-        data[current_size] = element;
-    }
-    else
-    {
-        resize(1);
-        data[current_size] = element;
-    }
-    current_size++;
-}
-
-void MyVector::push_back(int* element)
-{
-    if (current_size < m_size)
-    {
-        data[current_size] = *element;
-    }
-    else
-    {
-        resize(1);
-        data[current_size] = *element;
-    }
-    current_size++;
-}*/
 
 int MyVector::at(unsigned int index)
 {

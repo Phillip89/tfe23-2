@@ -1,9 +1,9 @@
 #include <fmt/chrono.h>
 #include <fmt/format.h>
 
-#include <vector> /* Provides std::vector */
+#include <vector> 
 #include "CLI/CLI.hpp"
-#include "config.h" /* Make sure this file exists and defines PROJECT_NAME, PROJECT_VER, PROJECT_BUILD_DATE */
+#include "config.h"
 #include "myVector.hpp"
 
 auto main(int argc, char** argv) -> int
@@ -24,30 +24,36 @@ auto main(int argc, char** argv) -> int
         return app.exit(e);
     }
 
-    MyVector vec(17);
-    for (int i=0; i<vec.size(); i++)
+    MyVector vec(1);
+    auto start = std::chrono::system_clock::now();
+    for (int i=0; i<20; i++)
     {
         vec.push_back(rand());
     }
-    
-    fmt::print("[");
+    auto end = std::chrono::system_clock::now();
+    auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
+    fmt::println("The inserting took: {}", elapsed);
+    fmt::print("\nwithout additional elements:\n[");
     for (int i=0; i<vec.size(); i++)
     {
         fmt::print("{}, ", vec.at(i));
     }
-    fmt::print("]");
+    fmt::print("]\n");
 
-    vec.push_back(13);
-    vec.push_back(13);
-    vec.push_back(13);
-    vec.push_back(13);
+    int new_element = 12;
+    int* new_element_pointer = &new_element;
 
-    fmt::print("\n[");
+    vec.push_back(new_element_pointer);
+    vec.push_back(new_element);
+    vec.push_back(new_element);
+    vec.push_back(new_element);
+
+    fmt::print("\nwith additional elements:\n[");
     for (int i=0; i<vec.get_current_size(); i++)
     {
         fmt::print("{}, ", vec.at(i));
     }
-    fmt::print("]");
+    fmt::print("]\n");
     
     return 0; // Exit gracefully
 }

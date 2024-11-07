@@ -10,9 +10,9 @@ public:
     unsigned int size();
     unsigned int get_current_size();
     void resize(int new_elements);
-    void push_back(int element);
-    //void push_back(int &element);
-    //void push_back(int* element);
+    //void push_back(int element);
+    void push_back(const int &element);
+    void push_back(const int* const element);
     int at(unsigned int index);
 
 private:
