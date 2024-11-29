@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.10.2)
 
 # Set the project name
-project(exercise-006 VERSION 0.0.1 LANGUAGES CXX)
+project(exercise-005 VERSION 0.0.1 LANGUAGES CXX)
 string(TIMESTAMP BUILD_DATE "%Y-%m-%dT%H:%M:%S")
 
 # Specify the C++ standard
@@ -19,7 +19,7 @@ configure_file("${CMAKE_CURRENT_SOURCE_DIR}/config.h.in" "${CMAKE_CURRENT_BINARY
 include_directories("${CMAKE_CURRENT_BINARY_DIR}/include") # Add the output path to the include path
 
 # Add the executable
-add_executable(${PROJECT_NAME} main.cpp)
+add_executable(${PROJECT_NAME} src/main.cpp)
 
 # Add libraries
 target_link_libraries(${PROJECT_NAME} PRIVATE
